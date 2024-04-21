@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chrono Odyssey: Return to Present</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+      }
+      .container {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+      }
+      body {
+        background: #000000 url() center no-repeat; /* Цвет фона и путь к файлу */
+        background-size: cover;
+        color: #fff; /* Цвет текста */
+        text-align: center;
+        font-family: sans-serif;
+      }
+      .card {
+        object-fit: none;
+        text-align: center;
+      }
+    </style>
+    <style>
+      .rounded-img {
+        width: 60%;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgb(195, 10, 10);
+        padding: 0.7em;
+        margin-bottom: 1em;
+      }
+      .nav-link {
+        display: inline-block;
+        vertical-align: top;
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.1s linear;
+        margin: 0 10px;
+        position: relative;
+        font-size: 20px;
+      }
+      .nav-link:hover {
+        color: #ae7f7f;
+      }
+      .navbar-toggler {
+        display: flex;
+        justify-content: space-between;
+      }
+      .nav-link:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #ae7f7f;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.1s linear;
+      }
+      .nav-link:hover::after {
+        opacity: 1;
+      }
+      .card-title {
+        font-size: 30px;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-family: "Kaushan Script", cursive;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand p-0" href="/">
+          <img src="logo.png" alt="Logo" width="60" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Labirint.html">Games</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container my-5">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+        <div class="col">
+          <div class="card">
+            <img src="Labiribth.jpg" class="card-img-top" alt="My image" />
+            <div class="card-body">
+              <h5 class="card-title">Labirinth</h5>
+              <p class="card-text">
+                In the labyrinth of time, Tyler encountered tangled paths and
+                old riddles, but his determination did not weaken. He used his
+                intelligence and ingenuity to overcome all obstacles, find a way
+                out and continue his journey.
+              </p>
+              <p class="card-text">
+                The playing field is a labyrinth consisting of both fixed parts.
+                The player's goal is to collect coins in the maze and then exit
+                the maze. Coins appear randomly on maps.
+              </p>
+              <a
+                href="https://en.wikipedia.org/wiki/Labyrinth_(board_game)"
+                class="btn btn-primary"
+                target="_blank"
+                >Go somewhere</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="Pac-Man.jpg" class="card-img-top" alt="My image" />
+            <div class="card-body">
+              <h5 class="card-title">Pac-Man</h5>
+              <p class="card-text">
+                In a world filled with ghosts and dots, Tyler faces a challenge
+                reminiscent of the classic Pac-Man game. He used his wits and
+                ability to act on the move to evade the ghosts chasing him,
+                collecting coins and striving for victory.
+              </p>
+              <p class="card-text">
+                The game screen is occupied by a labyrinth, the corridors of
+                which are filled with dots. The player's task is to control
+                Tyler and eat all the points of the maze, avoiding the ghosts
+                chasing the hero. If the ghost touches Tyler, his life will be
+                lost.
+              </p>
+              <a
+                href="https://ru.wikipedia.org/wiki/Pac-Man"
+                class="btn btn-primary"
+                target="_blank"
+                >Go somewhere</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="PoleChudes.jpg" class="card-img-top" alt="My image" />
+            <div class="card-body">
+              <h5 class="card-title">Field of Dreams</h5>
+              <p class="card-text">
+                At the Field of Dreams, Tyler faced mysterious challenges and
+                challenges, but his resourcefulness and ability to see beauty in
+                the world around him helped him find a way out and continue his
+                journey back home.
+              </p>
+              <p class="card-text">
+                The game screen involves guessing a given word using questions.
+                Tyler is given 5 attempts to spell the word. If he guesses
+                correctly, he will return to the present time.
+              </p>
+              <a
+                href="https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%BB%D0%B5_%D1%87%D1%83%D0%B4%D0%B5%D1%81"
+                class="btn btn-primary"
+                target="_blank"
+                >Go somewhere</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
