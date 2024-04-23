@@ -3,15 +3,26 @@ import sys
 from game.field_of_dreams import start_Field_of_Dreams
 from game.labyrinth import start_labyrinth
 from game.pacman import start_pacman
+from modl.db import record_user, not_win_user
 
 # Инициализация Pygame
-def starting_fields():
+def starting_fields(username):
     pygame.init()
 
     # Размеры окна
     WIDTH, HEIGHT = 800, 600
     # Цвета
     WHITE = (255, 255, 255)
+
+
+    labyrinth_time = 0
+    labyrinth_win = True
+
+    pacman_time = 0
+    pacman_win = True
+
+    field_attempt = 0
+    field_win = True
 
 
     music_file = "song/step_tyler.mp3"  # Путь к музыке
@@ -41,15 +52,18 @@ def starting_fields():
     # Загрузка изображений для анимации ходьбы
     walk_images_left = [pygame.image.load('player/left_a.png'),
                 pygame.image.load('player/left_b.png'),
-                pygame.image.load('player/left_c.png')]
+                pygame.image.load('player/left_c.png'),
+                pygame.image.load('player/left_b.png')]
 
     walk_images_right = [pygame.image.load('player/right_a.png'),
                 pygame.image.load('player/right_c.png'),
-                pygame.image.load('player/right_b.png')]
+                pygame.image.load('player/right_b.png'),
+                pygame.image.load('player/right_c.png')]
 
     walk_images_up = [pygame.image.load('player/up_a.png'),
                 pygame.image.load('player/up_b.png'),
-                pygame.image.load('player/up_c.png')]
+                pygame.image.load('player/up_c.png'),
+                pygame.image.load('player/up_b.png')]
 
 
 
@@ -102,7 +116,10 @@ def starting_fields():
                 
             if x == 244:
                 step_sound.stop()
-                start_labyrinth()
+                labyrinth_win, labyrinth_time = start_labyrinth()
+                if not labyrinth_win:
+                    not_win_user(username)
+                    return False
                 step_sound.play(-1)
                 walk_images = walk_images_up
                 left_step = False
@@ -121,7 +138,10 @@ def starting_fields():
 
             if y == 248:
                 step_sound.stop()
-                start_pacman()
+                pacman_win, pacman_time = start_pacman()
+                if not pacman_win:
+                    not_win_user(username)
+                    return False
                 step_sound.play(-1)
                 x, y = 640, 130
             
@@ -137,7 +157,13 @@ def starting_fields():
 
             if y == 50:
                 step_sound.stop()
-                start_Field_of_Dreams()
+                field_win, field_attempt = start_Field_of_Dreams()
+                if not field_win:
+                    not_win_user(username)
+                    return False
+                record = (labyrinth_time + pacman_time) / field_attempt
+                print(record)
+                record_user(username, record)
                 up_step = False
                 return True
                 
