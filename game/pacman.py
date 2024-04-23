@@ -74,9 +74,9 @@ def start_pacman():
                 if 530 <= event.pos[0] <= 675 and 395 <= event.pos [1] <= 420:
                     if the_end_game == 1:
                         start_game = False
-                        return True
+                        return True, time // 30
                     elif the_end_game == 2:
-                        return False
+                        return False, time // 30
                     else:
                         start_game = True
             elif event.type == pygame.KEYDOWN and start_game:
