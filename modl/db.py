@@ -219,6 +219,52 @@ def check_users():
 
 #print(check_users())
 
+
+def rating(username):
+    try:
+        # Connect to the database
+        db = sqlite3.connect('players.db')
+        cur = db.cursor()
+
+        cur.execute('''
+            SELECT name, record,
+                CASE
+                    WHEN (SELECT COUNT(*) FROM users AS u2 WHERE u2.record > u1.record) = 0 THEN ROW_NUMBER() OVER (ORDER BY record DESC)
+                    ELSE ROW_NUMBER() OVER (PARTITION BY record ORDER BY (CAST(wins AS REAL) / games) DESC)
+                END AS position
+            FROM users AS u1
+            ORDER BY record DESC
+            LIMIT 10
+        ''')
+
+
+
+
+        top_10 = cur.fetchall()
+        cur.execute('''
+            SELECT name, record, position
+            FROM (
+                SELECT name, record, 
+                    (SELECT COUNT(*) FROM users AS u2 WHERE u2.record > u1.record) + 1 AS position
+                FROM users AS u1
+                WHERE name = ?
+            )
+            ORDER BY record DESC
+            
+        ''', (username,))
+        user_top = cur.fetchone()
+        db.close()
+
+        if user_top:
+            return top_10, user_top
+        else:
+            return "No users"
+    except sqlite3.Error as e:
+        print("SQLite error:", e)
+        return False
+
+
+print(rating("Azamata"))
 # Commit the changes and close the connection
 db.commit()
 db.close()
