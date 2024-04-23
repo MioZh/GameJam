@@ -130,9 +130,9 @@ def start_Field_of_Dreams():
             elif event.type == pygame.MOUSEBUTTONDOWN and not start_game:
                 if 530 <= event.pos[0] <= 675 and 395 <= event.pos [1] <= 420:
                     if quit_game == 1:
-                        return True
+                        return True, attempt
                     elif quit_game == 2:
-                        return False
+                        return False, attempt
                     else:
                         start_game = True       
                         pygame.mixer.music.play(-1)
