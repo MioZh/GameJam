@@ -224,7 +224,7 @@ def rating(username):
         return False
 
 
-print(rating("Azamata"))
+#print(rating("Azamata"))
 # Commit the changes and close the connection
 db.commit()
 db.close()
