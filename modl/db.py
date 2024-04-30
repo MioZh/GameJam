@@ -27,47 +27,7 @@ cur.execute('''
 ''')
 
 
-def check_quetions():
-    try:
-        # Connect to the database
-        db = sqlite3.connect('players.db')
-        cur = db.cursor()
 
-        # Check if the username and password combination exists
-        cur.execute('''SELECT * FROM quetions''')
-        user = cur.fetchall()  # Fetch one row
-
-        # Close the database connection
-        db.close()
-
-        # If user is not None, it means the combination exists
-        if user:
-            return user
-        else:
-            return "No users"
-    except sqlite3.Error as e:
-        print("SQLite error:", e)
-        return False
-
-
-#print(check_quetions())
-
-def quet(quetion, submit):
-    try:
-        # Connect to the database
-        db = sqlite3.connect('players.db')
-        cur = db.cursor()
-        # Insert the new user into the database
-        cur.execute('''INSERT INTO quetions (quetion, submits) VALUES (?, ?)''', (quetion, submit))
-        db.commit()  # Commit the transaction
-        db.close()
-        return True
-    except sqlite3.Error as e:
-        print("SQLite error:", e)
-        return False
-
-
-#print(quet("What kind of light has the longest wavelength?", "infrared"))
 
 
 def get_quetion(id):
